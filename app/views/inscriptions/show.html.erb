@@ -1,0 +1,98 @@
+<p>
+    <%= image_tag @inscription.avatar.url(:thumb) %>
+</p>
+<p>
+  <strong>Full name:</strong>
+  <%= @inscription.full_name %>
+</p>
+<p>
+  <strong>Full name:</strong>
+  <%= @inscription.team.name %>
+</p>
+<p>
+  <strong>Birthday:</strong>
+  <%= @inscription.birthday %>
+</p>
+
+<p>
+  <strong>Mother:</strong>
+  <%= @inscription.mother %>
+</p>
+
+<p>
+  <strong>Father:</strong>
+  <%= @inscription.father %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @inscription.sex %>
+</p>
+
+<p>
+  <strong>Shirt size:</strong>
+  <%= @inscription.shirt_size %>
+</p>
+
+<p>
+  <strong>Baptism:</strong>
+  <%= @inscription.baptism %>
+</p>
+
+<p>
+  <strong>First eucharist:</strong>
+  <%= @inscription.first_eucharist %>
+</p>
+
+<p>
+  <strong>Chrism:</strong>
+  <%= @inscription.chrism %>
+</p>
+
+<p>
+  <strong>Follow me:</strong>
+  <%= @inscription.follow_me %>
+</p>
+
+<p>
+  <strong>Revive:</strong>
+  <%= @inscription.revive %>
+</p>
+
+<p>
+  <strong>Other meeting:</strong>
+  <%= @inscription.other_meeting %>
+</p>
+
+<p>
+  <strong>Pastoral:</strong>
+  <%= @inscription.pastoral %>
+</p>
+
+<p>
+  <strong>Health problem:</strong>
+  <%= @inscription.health_problem %>
+</p>
+
+<p>
+  <strong>Hp describe:</strong>
+  <%= @inscription.hp_describe %>
+</p>
+
+<p>
+  <strong>Medication:</strong>
+  <%= @inscription.medication %>
+</p>
+
+<p>
+  <strong>Medication time:</strong>
+  <%= @inscription.medication_time %>
+</p>
+
+<p>
+  <strong>Rmk:</strong>
+  <%= @inscription.rmk %>
+</p>
+
+<%= link_to 'Edit', edit_inscription_path(@inscription) %> |
+<%= link_to 'Back', inscriptions_path %>

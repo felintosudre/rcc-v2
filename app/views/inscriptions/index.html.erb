@@ -1,0 +1,40 @@
+<h1>Inscriptions</h1>
+
+<div class="col-sm-8">
+  <%= link_to 'New Inscription', new_inscription_path %>
+  <div class="panel panel-default">
+    <table class="table">
+      <% @inscriptions.each do |inscription| %>
+      <tr>
+        <td class="middle">
+          <%= link_to image_tag inscription.avatar.url(:thumb) %>
+        </td>
+        <td>
+          <div class="media">
+            <div class="media-left">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= inscription.full_name %>
+              </h4>
+              <%= inscription.birthday %><br>
+              <%= inscription.address.district %>
+              <%= inscription.address.city %> -
+              <%= inscription.address.state %>,
+              <%= inscription.address.zip_code %>
+            </div>
+          </div>
+        </td>
+        <td width="100" class="middle">
+          <div>
+            <%= link_to '', edit_inscription_path(inscription), class: "btn btn-circle btn-default btn-xs glyphicon glyphicon-edit", title: "Edit" %>
+            <%= link_to '', inscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-circle btn-danger btn-xs glyphicon glyphicon-remove", title: "Destroy" %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @inscriptions %>
+  </div>
+</div>
+

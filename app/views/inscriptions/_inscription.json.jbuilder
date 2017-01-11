@@ -1,0 +1,2 @@
+json.extract! inscription, :id, :full_name, :birthday, :mother, :father, :sex, :shirt_size, :baptism, :first_eucharist, :chrism, :follow_me, :revive, :other_meeting, :pastoral, :health_problem, :hp_describe, :medication, :medication_time, :rmk, :created_at, :updated_at
+json.url inscription_url(inscription, format: :json)

@@ -1,0 +1,216 @@
+<%= form_for(inscription, html: {class: "form-horizontal", multipart: true}) do |f| %>
+<fieldset>
+  <legend>Dados pessoais</legend>
+  <div class="form-group">
+    <div class="row"></div>
+    <%= f.label :full_name, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_field :full_name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :birthday, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.date_select :birthday, :start_year=>1930, prompt: { day: '', month: '', year: '' } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mother, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_field :mother, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :father, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_field :father, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-4">
+      <%= f.radio_button :sex, 'M' %>
+      <%= label :sex, 'Masculino' %>
+      <%= f.radio_button :sex, 'F' %>
+      <%= label :sex, 'Feminino'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :shirt_size, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.select :shirt_size, options_for_shirts(@inscription.shirt_size), class: "form-control" %>
+    </div>
+  </div>
+</fieldset>
+<!-- Fomulário aninhado de endenço -->
+<fieldset>
+  <legend>Endereço</legend>
+  <%= f.fields_for :address do |address_fields|%>
+  <div class="form-group">
+    <%= address_fields.label :street, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= address_fields.text_field :street, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= address_fields.label :district, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= address_fields.text_field :district, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= address_fields.label :city, class: "control-label col-sm-1" %>
+    <div class="col-sm-5">
+      <%= address_fields.text_field :city, class: "form-control" %>
+    </div>
+    <%= address_fields.label :state %>
+    <%= address_fields.select :state, options_for_states(@inscription.address.state) %>
+  </div>
+
+  <div class="form-group">
+    <%= address_fields.label :zip_code, class: "control-label col-sm-1" %>
+    <div class="col-sm-2">
+      <%= address_fields.text_field :zip_code, class: "form-control" %>
+    </div>
+  </div>
+</fieldset>
+<br>
+<% end %>
+</fieldset>
+
+<!-- Formulário aninhado de Contatos-->
+<fieldset>
+  <legend>Contatos</legend>
+  <!-- Emails -->
+  <div id="emails">
+    <%= f.fields_for :emails do |email_fields| %>
+    <%= render 'email_fields', :f => email_fields %>
+    <% end %>
+    <%= link_to_add_association 'add email', f, :emails %>
+    <br>
+  </div>
+  <div id="phones">
+    <%= f.fields_for :phones do |phone_fields| %>
+    <%= render 'phone_fields', :f => phone_fields %>
+    <% end %>
+    <%= link_to_add_association 'add phone', f, :phones %>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Questionário</legend>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <div class="row">
+         <div class="col-md-3">
+          <%= f.check_box :holy_mass %>
+          <%= f.label :holy_mass %>
+        </div>
+        <div class="col-md-3">
+          <%= f.check_box :baptism %>
+          <%= f.label :baptism %>
+        </div>
+        <div class="col-md-3">
+          <%= f.check_box :first_eucharist %>
+          <%= f.label :first_eucharist %>
+        </div>
+        <div class="col-md-3">
+          <%= f.check_box :chrism %>
+          <%= f.label :chrism %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.check_box :follow_me %>
+          <%= f.label :follow_me %>
+        </div>
+        <div class="col-md-4">
+          <%= f.check_box :revive %>
+          <%= f.label :revive %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :other_meeting, class: "control-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.text_field :other_meeting, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pastoral, class: "control-label col-sm-1" %>
+    <div class="col-sm-6">
+      <%= f.text_field :pastoral, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :health_problem, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_field :health_problem, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :hp_describe, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_field :hp_describe, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :medication, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_field :medication, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :medication_time, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.datetime_select :medication_time, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rmk, class: "control-label col-sm-1" %>
+    <div class="col-sm-8">
+      <%= f.text_area :rmk, class: "form-control" %>
+    </div>
+  </div>
+</fieldset>
+<div class="field">
+<%= f.label :team_id %><br>
+  <%= f.collection_select(:team_id, @teams_options, :id, :name) %>
+</div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.check_box :holy_mass %>
+          <%= f.label :holy_mass %>
+        </div>
+        <div class="col-md-4">
+          <%= f.check_box :coordinator %>
+          <%= f.label :coordinator %>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="form-group">
+  <%= f.label :avatar, class: "control-label col-sm-1" %>
+  <div class="col-sm-2">
+    <%=f.file_field :avatar %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-10">
+    <%= f.submit class: "btn btn-success" %> <%= link_to 'Cancelar', root_path, class: "btn btn-default" %>
+  </div>
+</div>
+<% end %>

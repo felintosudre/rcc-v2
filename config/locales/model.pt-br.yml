@@ -1,0 +1,40 @@
+pt-BR:
+  activerecord:
+    models:
+      inscription:
+        one: Inscrição
+        other: Inscrições
+      address:
+      email:
+      phone:
+    attributes:
+      inscription:
+        full_name: Nome
+        birthday: Nascimento
+        mother: Mãe
+        father: Pai
+        sex: Sexo
+        shirt_size: Camiseta
+        baptism: Batismo
+        first_eucharist: Primeira eucaristia
+        chrism: Crisma
+        follow_me: Segue-me
+        revive: Renascer
+        other_meeting: Outro encontro
+        pastoral: Pastoral
+        health_problem: Problema de saúde
+        hp_describe: Problema de saúde - Descrição
+        medication: Medicação
+        medication_time: Horário da medicação
+        rmk: Nota
+      address:
+        street: Endereço
+        district: Bairro
+        city: Cidade
+        state: Estado
+        zip_code: Cep
+      email:
+        email: E-mail
+      phone:
+        phone: Telefone
+
